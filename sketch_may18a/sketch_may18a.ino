@@ -18,7 +18,6 @@ void setup() {
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
   Estado = digitalRead(Sensor);
   Serial.println(Estado);
   if (!Estado) {
@@ -39,7 +38,7 @@ void semPedestre() {
 void comPedestre() {
   digitalWrite(ledVerde, LOW);
   digitalWrite(ledAmarelo, HIGH);
-  delay(2000);
+  delay(2500);
   digitalWrite(ledAmarelo, LOW);
   digitalWrite(predeston, HIGH);
   digitalWrite(predestoff, LOW);
@@ -52,9 +51,9 @@ void comPedestre() {
   
   for (int i = 1; i < 4; i++) {
     digitalWrite(predestoff, HIGH);
-    delay(450);
+    delay(500);
     digitalWrite(predestoff, LOW);
-    delay(450);
+    delay(500);
   };
   digitalWrite(ledVerde, HIGH);
   digitalWrite(ledVermelho, LOW);
