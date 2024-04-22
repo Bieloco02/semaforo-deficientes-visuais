@@ -1,62 +1,58 @@
-#define ledVermelho 4
-#define ledAmarelo 3
-#define ledVerde 2
-#define Sensor 5
+#include <Adafruit_NeoPixel.h>
+
+#define PIN        6  // pino de controle da fita de led
+#define NUMPIXELS 300 // número de leds presentes na fita
 #define motor 8
-#define predeston 6
-#define predestoff 7
-int Estado;
+#define Sensor 5
+
+/*Instancia a fita de led
+======================================================================= */
+Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+
+//#define DELAYVAL 0 // Time (in milliseconds) to pause between pixels
+
 void setup() {
-  Serial.begin(9600);
-  pinMode(ledVermelho, OUTPUT);
-  pinMode(ledAmarelo, OUTPUT);
-  pinMode(ledVerde, OUTPUT);
-  pinMode(Sensor, INPUT);
-  pinMode(motor, OUTPUT);
-  pinMode(predeston, OUTPUT);
-  pinMode(predestoff, OUTPUT);
+  pixels.begin(); // Inicializa a fita de led
+  pixels.clear(); // apaga todos os leds
+
 }
 
 void loop() {
-  Estado = digitalRead(Sensor);
-  Serial.println(Estado);
-  if (!Estado) {
-    comPedestre();
-  }
-  else {
-    semPedestre();
-  }
-}
-void semPedestre() {
-  digitalWrite(ledAmarelo, LOW);
-  digitalWrite(ledVermelho, LOW);
-  digitalWrite(motor, LOW);
-  digitalWrite(ledVerde, HIGH);
-  digitalWrite(predestoff, HIGH);
-  digitalWrite(predeston, LOW);
-}
-void comPedestre() {
-  digitalWrite(ledVerde, LOW);
-  digitalWrite(ledAmarelo, HIGH);
-  delay(2500);
-  digitalWrite(ledAmarelo, LOW);
-  digitalWrite(predeston, HIGH);
-  digitalWrite(predestoff, LOW);
-  digitalWrite(motor, HIGH);
-  digitalWrite(ledVermelho, HIGH);
+  verde();
+  delay(10000);
+  amarelo();
   delay(4000);
-  digitalWrite(motor, LOW);
-  delay(550);
-  digitalWrite(predeston, LOW);
-  
-  for (int i = 1; i < 4; i++) {
-    digitalWrite(predestoff, HIGH);
-    delay(500);
-    digitalWrite(predestoff, LOW);
-    delay(500);
-  };
-  digitalWrite(ledVerde, HIGH);
-  digitalWrite(ledVermelho, LOW);
-  digitalWrite(predestoff, HIGH);
-  delay(7855);
+  vermelho();
+  delay(10000);
 }
+/*função para acendimento do sinal vermelho dos carros*/
+void vermelho(){
+   pixels.clear(); // apaga todos os leds
+  /*acende metade dos leds vermelhos*/
+  for(int i=0; i<15; i++) { 
+    pixels.setPixelColor(i, pixels.Color(150, 0, 0));
+    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    }//fim do for
+  /*acende a outra metade dos leds vermelhos*/  
+    for(int i=19; i<35; i++) { 
+    pixels.setPixelColor(i, pixels.Color(150, 0, 0));
+    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    } 
+}//fim função vermelho
+
+/*função para acendimento do sinal vermelho dos carros*/
+void amarelo(){
+    pixels.clear(); // apaga todos os leds
+    for(int i=44; i<60; i++) { 
+    pixels.setPixelColor(i, pixels.Color(150, 150, 0));
+    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    }//fim do laço for
+}//fim função amarelo
+
+void verde(){
+     pixels.clear(); // apaga todos os leds
+    for(int i=64; i<80; i++) { 
+    pixels.setPixelColor(i, pixels.Color(0, 150, 0));
+    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    }//fim do laço for
+}//fim função verde
