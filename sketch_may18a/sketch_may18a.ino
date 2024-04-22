@@ -10,14 +10,23 @@
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 //#define DELAYVAL 0 // Time (in milliseconds) to pause between pixels
-
+int Estado;
 void setup() {
   pixels.begin(); // Inicializa a fita de led
   pixels.clear(); // apaga todos os leds
+  pinMode(Sensor, INPUT);
+  pinMode(motor, OUTPUT);
 
 }
 
 void loop() {
+  /*Estado = digitalRead(Sensor);
+  Serial.println(Estado);
+  if (!Estado) {
+    comPedestre();
+  }
+  else {
+    semPedestre();*/
   verde();
   delay(10000);
   amarelo();
