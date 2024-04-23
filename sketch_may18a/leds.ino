@@ -30,7 +30,7 @@ void loop() {
   }
   else {
     vermelho();
-    delay(100);
+    delay(4000);
     
   /*verde();
   delay(10000);
@@ -57,11 +57,8 @@ void vermelho(){
     for(int i=19; i<35; i++) { 
     pixels.setPixelColor(i, pixels.Color(150, 0, 0));
     pixels.show();   // executa o acendimento dos leds na cor desejada.
-    } 
-    for(int i=80; i<300; i++) { 
-    pixels.setPixelColor(i, pixels.Color(150, 0, 0));
-    pixels.show();   // executa o acendimento dos leds na cor desejada.
-    } 
+    }
+    alerta();
 }//fim função vermelho
 
 /*função para acendimento do sinal vermelho dos carros*/
@@ -80,3 +77,18 @@ void verde(){
     pixels.show();   // executa o acendimento dos leds na cor desejada.
     }//fim do laço for
 }//fim função verde
+void alerta(){
+  for(int i=80; i<300; i++) { 
+    pixels.setPixelColor(i, pixels.Color(150, 0, 0));
+    pixels.show(); // alerta.
+    } 
+    delay(100);
+    for(int i=80; i<300; i++) { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show(); }
+    delay(100);
+    for(int i=80; i<300; i++) { 
+    pixels.setPixelColor(i, pixels.Color(150, 0, 0));
+    pixels.show(); }
+    delay(2500);
+}
