@@ -10,31 +10,55 @@
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
 
 //#define DELAYVAL 0 // Time (in milliseconds) to pause between pixels
-
+int Estado;
 void setup() {
   pixels.begin(); // Inicializa a fita de led
   pixels.clear(); // apaga todos os leds
+  pinMode(Sensor, INPUT);
+  pinMode(motor, OUTPUT);
 
 }
 
 void loop() {
-  verde();
+  Estado = digitalRead(Sensor);
+  Serial.println(Estado);
+  if (Estado) {
+    amarelo();
+    delay(2500);
+    verde();
+    delay(4000);
+  }
+  else {
+    vermelho();
+    delay(100);
+    
+  /*verde();
   delay(10000);
   amarelo();
   delay(4000);
   vermelho();
-  delay(10000);
+  delay(10000);*/
+ }
 }
 /*função para acendimento do sinal vermelho dos carros*/
 void vermelho(){
-   pixels.clear(); // apaga todos os leds
+   
+   //pixels.clear(); // apaga todos os leds
   /*acende metade dos leds vermelhos*/
+  for(int i=44; i<300; i++) { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    }//fim do for
   for(int i=0; i<15; i++) { 
     pixels.setPixelColor(i, pixels.Color(150, 0, 0));
     pixels.show();   // executa o acendimento dos leds na cor desejada.
     }//fim do for
   /*acende a outra metade dos leds vermelhos*/  
     for(int i=19; i<35; i++) { 
+    pixels.setPixelColor(i, pixels.Color(150, 0, 0));
+    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    } 
+    for(int i=80; i<300; i++) { 
     pixels.setPixelColor(i, pixels.Color(150, 0, 0));
     pixels.show();   // executa o acendimento dos leds na cor desejada.
     } 
