@@ -14,8 +14,8 @@ int Estado;
 void setup() {
   pixels.begin(); // Inicializa a fita de led
   pixels.clear(); // apaga todos os leds
-  pinMode(Sensor, INPUT);
-  pinMode(motor, OUTPUT);
+  pinMode(Sensor, INPUT); //inclui o sensor infravermelho
+  pinMode(motor, OUTPUT); // inclui o vibracall
 
 }
 
@@ -32,28 +32,25 @@ void loop() {
     vermelho();
     delay(4000);
     
-  /*verde();
-  delay(10000);
-  amarelo();
-  delay(4000);
-  vermelho();
-  delay(10000);*/
  }
 }
 /*função para acendimento do sinal vermelho dos carros*/
 void vermelho(){
    
    //pixels.clear(); // apaga todos os leds
-  /*acende metade dos leds vermelhos*/
+  /*apaga os leds amarelos e verdes*/
   for(int i=44; i<300; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show();   // executa o acendimento dos leds na cor desejada.
+    pixels.show();
     }//fim do for
+  
+  //acende o primeiro circulo 
   for(int i=0; i<15; i++) { 
     pixels.setPixelColor(i, pixels.Color(150, 0, 0));
     pixels.show();   // executa o acendimento dos leds na cor desejada.
     }//fim do for
-  /*acende a outra metade dos leds vermelhos*/  
+  
+  //acende o segundo circulo
     for(int i=19; i<35; i++) { 
     pixels.setPixelColor(i, pixels.Color(150, 0, 0));
     pixels.show();   // executa o acendimento dos leds na cor desejada.
@@ -78,7 +75,7 @@ void verde(){
     }//fim do laço for
 }//fim função verde
 void alerta(){
-  for(int i=80; i<300; i++) { 
+  for(int i=80; i<300; i++)   { 
     pixels.setPixelColor(i, pixels.Color(150, 0, 0));
     pixels.show(); // alerta.
     } 
