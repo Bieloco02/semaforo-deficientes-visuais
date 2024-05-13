@@ -33,23 +33,40 @@ void loop() {
 
  }
 }
+void alerta(){
+  for(int i=0; i<220; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(250, 0, 0));
+    pixels.show(); // alerta.
+    } 
+    delay(100);
+    for(int i=0; i<220; i++) { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show(); }
+    delay(100);
+    for(int i=0; i<220; i++) { 
+    pixels.setPixelColor(i, pixels.Color(250, 0, 0));
+    pixels.show(); }
+    delay(1000);
+    pixels.clear();
+}
 //função para acendimento do sinal vermelho dos carros
 void vermelho(){
+  /*//apagar amarelo e verde
   for(int i=44; i<80; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
     pixels.show();
-    }
-  //acende o primeiro circulo 
-  for(int i=0; i<15; i++) { 
+    }*/
+  //acende o vermelho 
+  for(int i=221; i<256; i++) { 
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
     pixels.show();   
     }
 
-  //acende o segundo circulo
+  /*//acende o segundo circulo
     for(int i=19; i<35; i++) { 
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
     pixels.show();
-    }
+    }*/
     delay(1500);
      digitalWrite(motor, HIGH);//liga o vibracall
     alerta();
@@ -61,7 +78,7 @@ void vermelho(){
 //função para acendimento do sinal amarelo dos carros
 void amarelo(){
     pixels.clear(); // apaga todos os leds
-    for(int i=44; i<60; i++) { 
+    for(int i=266; i<282; i++) { 
     pixels.setPixelColor(i, pixels.Color(255,191, 0));
     pixels.show();
     }
@@ -78,24 +95,8 @@ void amarelo(){
 
 
 void verde(){
-    for(int i=64; i<80; i++) { 
+    for(int i=284; i<300; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show();
     }
-}
-void alerta(){
-  for(int i=80; i<300; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(250, 0, 0));
-    pixels.show(); // alerta.
-    } 
-    delay(100);
-    for(int i=80; i<300; i++) { 
-    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show(); }
-    delay(100);
-    for(int i=80; i<300; i++) { 
-    pixels.setPixelColor(i, pixels.Color(250, 0, 0));
-    pixels.show(); }
-    delay(1000);
-    pixels.clear();
 }
