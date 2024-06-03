@@ -1,5 +1,4 @@
 #include <Adafruit_NeoPixel.h>
-
 #define PIN        6  // pino de controle da fita de led
 #define NUMPIXELS 300 // número de leds presentes na fita
 #define motor 8 // define porta do vibracall
@@ -39,11 +38,11 @@ void alerta(){
     pixels.show(); // alerta.
     } 
     delay(100);
-    for(int i=0; i<220; i++) { 
+    for(int i=35; i<220; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
     pixels.show(); }
     delay(100);
-    for(int i=0; i<220; i++) { 
+    for(int i=35; i<220; i++) { 
     pixels.setPixelColor(i, pixels.Color(250, 0, 0));
     pixels.show(); }
     delay(4000);
@@ -73,6 +72,7 @@ void alerta(){
     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
     pixels.show(); //pedrest
   }
+  delay(657);
     for(int i=0; i<35; i++)   { 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show(); //pedrest
@@ -82,12 +82,17 @@ void alerta(){
     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
     pixels.show(); //pedrest
   }
+  delay(657);
     for(int i=0; i<35; i++)   { 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show(); //pedrest
     } 
   delay(657); 
     pixels.clear();
+    for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
+    pixels.show(); //pedrest
+    } 
 }
 //função para acendimento do sinal vermelho dos carros
 void vermelho(){
@@ -108,7 +113,10 @@ void vermelho(){
 
 //função para acendimento do sinal amarelo dos carros
 void amarelo(){
-    pixels.clear(); // apaga todos os leds
+   for(int i=284; i<299; i++) { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show();
+    }
     for(int i=266; i<282; i++) { 
     pixels.setPixelColor(i, pixels.Color(255,191, 0));
     pixels.show();
@@ -122,6 +130,10 @@ void amarelo(){
     delay(340);
     digitalWrite(motor, LOW);
     delay(1600);
+    for(int i=266; i<282; i++) { 
+    pixels.setPixelColor(i, pixels.Color(0,0, 0));
+    pixels.show();
+    }
 }
 
 
