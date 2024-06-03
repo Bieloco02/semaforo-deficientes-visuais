@@ -95,7 +95,7 @@ void amarelo(){
 
 
 void verde(){
-    for(int i=284; i<300; i++) { 
+    for(int i=284; i<299; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show();
     }
