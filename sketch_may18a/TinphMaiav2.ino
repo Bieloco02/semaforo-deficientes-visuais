@@ -34,7 +34,7 @@ void loop() {
  }
 }
 void alerta(){
-  for(int i=0; i<220; i++)   { 
+  for(int i=35; i<220; i++)   { 
     pixels.setPixelColor(i, pixels.Color(250, 0, 0));
     pixels.show(); // alerta.
     } 
@@ -46,33 +46,64 @@ void alerta(){
     for(int i=0; i<220; i++) { 
     pixels.setPixelColor(i, pixels.Color(250, 0, 0));
     pixels.show(); }
-    delay(1000);
+    delay(4000);
+  digitalWrite(motor, LOW);
+  delay(3567);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0,0, 0));
+    pixels.show(); //pedrest
+    } 
+  delay(657);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
+    pixels.show(); //pedrest
+    } 
+  delay(657);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show(); //pedrest
+    } 
+  delay(657);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
+    pixels.show(); //pedrest
+    } 
+  delay(657);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show(); //pedrest
+  }
+    for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
+    pixels.show(); //pedrest
+    } 
+  delay(657);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
+    pixels.show(); //pedrest
+  }
+    for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
+    pixels.show(); //pedrest
+    } 
+  delay(657); 
     pixels.clear();
 }
 //função para acendimento do sinal vermelho dos carros
 void vermelho(){
-  /*//apagar amarelo e verde
-  for(int i=44; i<80; i++) { 
-    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show();
-    }*/
   //acende o vermelho 
   for(int i=221; i<256; i++) { 
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
     pixels.show();   
     }
-
-  /*//acende o segundo circulo
-    for(int i=19; i<35; i++) { 
-    pixels.setPixelColor(i, pixels.Color(255, 0, 0));
-    pixels.show();
-    }*/
-    delay(1500);
+    delay(3000);
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
+    pixels.show(); //pedrest
+    } 
      digitalWrite(motor, HIGH);//liga o vibracall
     alerta();
-    delay(4000);
-    digitalWrite(motor, LOW);
-    delay(4000);
+    delay(500);
 }//fim função vermelho
 
 //função para acendimento do sinal amarelo dos carros
@@ -99,4 +130,8 @@ void verde(){
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show();
     }
+  for(int i=0; i<35; i++)   { 
+    pixels.setPixelColor(i, pixels.Color(250, 0, 0));
+    pixels.show(); //pedrest
+}
 }
