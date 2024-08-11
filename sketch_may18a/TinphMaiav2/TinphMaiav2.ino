@@ -1,3 +1,4 @@
+#include <Servo.h>
 #include <Adafruit_NeoPixel.h>
 #define PIN        6  // pino de controle da fita de led
 #define NUMPIXELS 300 // número de leds presentes na fita
@@ -7,15 +8,16 @@
 /*Instancia a fita de led
 ======================================================================= */
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
+Servo myservo;
+int pos = 0;
 
-//#define DELAYVAL 0 // Tempo (em milisegundos) pausa entre pixeis
 int Estado;
 void setup() {
   pixels.begin(); // Inicializa a fita de led
   pixels.clear(); // apaga todos os leds
   pinMode(Sensor, INPUT); //inclui o sensor infravermelho
   pinMode(motor, OUTPUT); // inclui o vibracall
-
+  myservo.attach(9);
 }
 
 void loop() {
@@ -96,6 +98,11 @@ void alerta(){
 }
 //função para acendimento do sinal vermelho dos carros
 void vermelho(){
+  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
+    // in steps of 1 degree
+    myservo.write(pos);              // tell servo to go to position in variable 'pos'
+    delay(15);                    // waits 15ms for the servo to reach the position
+  }
   //acende o vermelho 
   for(int i=210; i<250; i++) { 
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
@@ -138,6 +145,10 @@ void amarelo(){
 
 
 void verde(){
+    for (pos = 180; pos >= 0; pos -= 1) {
+ myservo.write(pos);
+delay(15);
+}
     for(int i=280; i<300; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show();
