@@ -8,10 +8,10 @@
 int pos = 0;           //define pos como valendo 0
 Servo myservo;         // nomeia o servo como myservo
 
-#define PIN        6  // pino da fita de led
-#define NUMPIXELS 300 // número de leds presentes na fita
-#define motor 8 // define porta do vibracall
-#define Sensor 5 // define porta do sensor infravermelho
+#define PIN 6          // pino da fita de led
+#define NUMPIXELS 300  // número de leds presentes na fita
+#define motor 8        // define porta do vibracall
+#define Sensor 5       // define porta do sensor infravermelho
 
 
 Adafruit_NeoPixel pixels(NUMPIXELS, PIN, NEO_GRB + NEO_KHZ800);
@@ -25,12 +25,11 @@ void setup() {
   pinMode(motor, OUTPUT);  // inclui o vibracall
   myservo.attach(9);       //inclui o servo motor
 
-  pixels.begin(); // Inicia a fita de led
-  pixels.clear(); // apaga todos os leds
-  pinMode(Sensor, INPUT); //inclui o sensor infravermelho
-  pinMode(motor, OUTPUT); // inclui o vibracall
+  pixels.begin();          // Inicia a fita de led
+  pixels.clear();          // apaga todos os leds
+  pinMode(Sensor, INPUT);  //inclui o sensor infravermelho
+  pinMode(motor, OUTPUT);  // inclui o vibracall
   myservo.attach(9);
-
 }
 
 void loop() {
@@ -38,9 +37,9 @@ void loop() {
   Serial.println(Estado);
   if (Estado) {  // se o sensor nao estiver lendo nenhum objeto ele liga as luzes do semaforo verde
     verde();
-  } else {  //se o sensor fazer a leitura de algum objeto 
+  } else {  //se o sensor fazer a leitura de algum objeto
     delay(1000);
-    amarelo(); 
+    amarelo();
     vermelho();
     delay(10);
   }
