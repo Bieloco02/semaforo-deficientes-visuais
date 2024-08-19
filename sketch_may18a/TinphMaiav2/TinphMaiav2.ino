@@ -35,6 +35,7 @@ void loop() {
  }
 }
 void alerta(){
+  
   for(int i=35; i<205; i++)   { 
     pixels.setPixelColor(i, pixels.Color(250, 0, 0));
     pixels.show(); // alerta.
@@ -43,72 +44,45 @@ void alerta(){
     for(int i=35; i<205; i++) { 
     pixels.setPixelColor(i, pixels.Color(0, 0, 0));
     pixels.show(); }
+
     delay(100);
+
     for(int i=35; i<205; i++) { 
     pixels.setPixelColor(i, pixels.Color(250, 0, 0));
     pixels.show(); }
+
     delay(4000);
   digitalWrite(motor, LOW);
   delay(3567);
-  for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0,0, 0));
-    pixels.show(); //pedrest
+  for(int r=0; r<7; r++){
+    for(int i=0; i<35; i++)   { 
+      pixels.setPixelColor(i, pixels.Color(0,0, 0));
+      pixels.show(); //pedrest
     } 
-  delay(657);
-  for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
-    pixels.show(); //pedrest
+    
+    delay(657);
+    for(int i=0; i<35; i++)   { 
+      pixels.setPixelColor(i, pixels.Color(250, 0, 0));
+      pixels.show(); //pedrest
     } 
-  delay(657);
-  for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show(); //pedrest
-    } 
-  delay(657);
-  for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
-    pixels.show(); //pedrest
-    } 
-  delay(657);
-  for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show(); //pedrest
+    delay(657);
   }
-  delay(657);
-    for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
-    pixels.show(); //pedrest
-    } 
-  delay(657);
-  for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 0, 0));
-    pixels.show(); //pedrest
-  }
-  delay(657);
-    for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
-    pixels.show(); //pedrest
-    } 
-  delay(657); 
-    pixels.clear();
-    for(int i=0; i<35; i++)   { 
-    pixels.setPixelColor(i, pixels.Color(0, 250, 0));
-    pixels.show(); //pedrest
-    } 
+  pixels.clear();
+  
 }
+
 //função para acendimento do sinal vermelho dos carros
 void vermelho(){
-  for (pos = 0; pos <= 180; pos += 1) { // goes from 0 degrees to 180 degrees
-    // in steps of 1 degree
-    myservo.write(pos);              // tell servo to go to position in variable 'pos'
-    delay(15);                    // waits 15ms for the servo to reach the position
-  }
+  
+    // waits 15ms for the servo to reach the position
   //acende o vermelho 
   for(int i=210; i<250; i++) { 
     pixels.setPixelColor(i, pixels.Color(255, 0, 0));
     pixels.show();   
     }
     delay(3000);
+    myservo.write(90);
+    delay(15);
   for(int i=0; i<35; i++)   { 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show(); //pedrest
@@ -139,22 +113,22 @@ void amarelo(){
     delay(1600);
     for(int i=255; i<275; i++) { 
     pixels.setPixelColor(i, pixels.Color(0,0, 0));
-    pixels.show();
-    }
-}
-
-
-void verde(){
-    for (pos = 180; pos >= 0; pos -= 1) {
+    pixels.show(  );
+    }  
+}  
+  
+  
+void verde(){  
  myservo.write(pos);
-delay(15);
-}
-    for(int i=280; i<300; i++) { 
+delay(100);  
+  
+    for(int i=280; i<300; i++){ 
     pixels.setPixelColor(i, pixels.Color(0, 250, 0));
     pixels.show();
     }
   for(int i=0; i<35; i++)   { 
     pixels.setPixelColor(i, pixels.Color(250, 0, 0));
     pixels.show(); //pedrest
+    
 }
 }
